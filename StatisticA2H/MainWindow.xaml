@@ -1,0 +1,57 @@
+﻿<Window x:Class="StatisticA2H.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StatisticA2H"
+        mc:Ignorable="d"
+        Title="Утилита сбора статистики работы A2H" Height="600" Width="1200" ResizeMode="CanResizeWithGrip" Closing="Window_Closing" WindowStartupLocation="CenterScreen">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" HorizontalAlignment="Left" Background="LightGreen" BorderBrush="Black">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Новый файл статистики" Name="NewItem" Click="NewItem_Click"/>
+                <Separator/>
+                <MenuItem Header="Открыть файл статистики" Name="OpenItem" Click="OpenItem_Click"/>
+                <MenuItem Header="Сохранить изменения" Name="SaveItem" Click="SaveItem_Click"/>
+                <MenuItem Header="Сохранить файл статистики как ..." Name="SaveAsItem" Click="SaveAsItem_Click"/>
+                <Separator/>
+                <MenuItem Header="Выход" Click="MenuItem_Click"/>
+            </MenuItem>
+        </Menu>
+        <ToolBar DockPanel.Dock="Top" Background="AntiqueWhite">
+            <Border VerticalAlignment="Center">
+                <WrapPanel>
+                    <Button Content="Запустить сбор статистики" Height="30" Margin="4" Click="Button_Click"/>
+                    <Button Content="Остановить сбор статистики" Height="30" Margin="4" Click="Button_Click_1"/>
+                    <Button Content="Показать итоговую статистику" Height="30" Margin="4" Click="Button_Click_2"/>
+                    <Button Content="Вывод в Excel" Height="30" Margin="4" Name="ButtonExcel" Click="ButtonExcel_OnClick"/>
+                    <CheckBox Content="Тестовые данные" VerticalAlignment="Center" Name="CheckBoxSim" Checked="CheckBoxSim_Checked"/>
+                </WrapPanel>
+            </Border>
+        </ToolBar>
+        <StatusBar DockPanel.Dock="Bottom">
+            <Label Name="LabelFilePath" Content="Файл не открыт"/>
+        </StatusBar>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+            <Grid Grid.Column="0">
+                <Label Name="LabelResult" Content="Мгновенные данные:"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Собранные данные:"/>
+                
+                <ListBox Name="ListBoxResult" Grid.Row="1"/>
+            </Grid>
+
+        </Grid>
+    </DockPanel>
+</Window>
